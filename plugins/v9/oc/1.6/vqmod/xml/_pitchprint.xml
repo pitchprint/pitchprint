@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>PITCHPRINT APP 8.3.6</id>
+	<version>1.5.6.4</version>
+	<vqmver>2.X</vqmver>
+	<author>Synergic Laboratories</author>
+    
+    <file name="admin/controller/catalog/product.php">
+        <operation>
+				<search position="before"><![CDATA[$this->template = 'catalog/product_form.tpl';]]></search>
+				<add><![CDATA[ 
+                    $this->load->model('setting/setting');
+                    $pitch_s = $this->model_setting_setting->getSetting('pitchprint');
+                    $this->data['pitchprint_api_value'] = $pitch_s['apikey'];
+                    $this->data['pitchprint_secret_value'] = $pitch_s['secretkey'];
+					
+                    $this->data['current_design_id'] = -1;
+                    $this->data['current_upload_opt'] = 0;
+                    
+                    if (isset($this->request->get['product_id'])) {
+                        $this->load->model('pitchprint/process');
+                        $pitch_val = $this->model_pitchprint_process->getWeb2Print($this->request->get['product_id']);
+                        $pitch_val = explode(":", $pitch_val);
+						
+                        if (count($pitch_val) > 1) {
+                            $this->data['current_design_id'] = $pitch_val[0];
+                            $this->data['current_upload_opt'] = $pitch_val[1];
+                        }
+                    }
+
+				]]></add>
+		</operation>
+		
+	</file>
+    <file name="admin/view/template/catalog/option_form.tpl">
+		<operation>
+				<search position="after"><![CDATA[<option value="datetime"><?php echo $text_datetime; ?></option>]]></search>
+				<add><![CDATA[
+				<?php } ?>
+                </optgroup>
+				<optgroup label="PitchPrint">
+					<?php if ($type == 'web2print') { ?>
+					<option value="web2print" selected>PitchPrint</option>
+					<?php } else { ?>
+					<option value="web2print">PitchPrint</option>
+					
+				]]></add>
+		</operation>
+	</file>
+    <file error="log" name="admin/view/template/catalog/product_form.tpl">
+        <operation>
+				<search position="before"><![CDATA[<?php if ($product_option['type'] == 'select' ||]]></search>
+				<add><![CDATA[
+					<?php if ($product_option['type'] == 'web2print') { 
+						echo '<input id="web2print_option_values" type="hidden" name="product_option[' . $option_row . '][option_value]" value="" />';
+						?>
+						<div id="web2print_init_option"></div>
+						<?php
+					} ?>
+				]]></add>
+		</operation>
+        <operation info="Javascripts needed for Web2print execution">
+				<search position="bottom"></search>
+				<add><![CDATA[ 
+					<?php
+						$timestamp = time();
+						$signature = md5($pitchprint_api_value . html_entity_decode($pitchprint_secret_value) . $timestamp);
+					?>
+                    <script type="text/javascript">
+						jQuery(function($) { 
+							var PPADMIN = window.PPADMIN; if (typeof PPADMIN === 'undefined') window.PPADMIN = PPADMIN = { version: '8.3.0', readyFncs: [] };
+							
+							PPADMIN.vars = {
+								cdnBase: '//dta8vnpq1ae34.cloudfront.net/',
+								rscBase: '//s3.amazonaws.com/pitchprint.rsc/',
+								buildPath: 'app/83/',
+								runtimeBase: 'https://pitchprint.net/api/runtime/',
+								adminPath: 'https://pitchprint.net/admin/',
+								current_upload_opt: <?php echo $current_upload_opt; ?>,
+								selectedOption: '<?php echo $current_design_id; ?>',
+								product: { id:<?php echo (isset($_GET['product_id']) ? $_GET['product_id'] : '""'); ?>, name:'' },
+								version: 1,
+								credentials: {timestamp:'<?php echo $timestamp; ?>', apiKey:'<?php echo $pitchprint_api_value; ?>', signature:'<?php echo $signature; ?>'}
+							}
+							PPADMIN.readyFncs.push('init', 'fetchDesigns');
+							if (typeof PPADMIN.start !== 'undefined') PPADMIN.start();
+						});
+                    </script>
+					<link rel="stylesheet" type="text/css" href="../catalog/view/javascript/jquery/colorbox/colorbox.css" />
+					<link rel="stylesheet" type="text/css" href="//dta8vnpq1ae34.cloudfront.net/stylesheets/pp_opencart.css" />
+					<script type="text/javascript" src="../catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
+					<script type="text/javascript" src="https://dta8vnpq1ae34.cloudfront.net/app/83/js/a.oc.js"></script>
+					</script>
+				]]></add>
+		</operation>
+		<operation >
+			<search position="after"><![CDATA[<div id="tab-option">]]></search>
+			<add><![CDATA[ 
+					
+					<div style="display:none" id="web2print_option_form">
+						<table class="form">
+							<tr>
+								<td> Clients can Upload Design File: </td>
+								<td> 
+									<select onchange="PPADMIN.changeOpts()" id="ppa_pick_upload" name="ppa_pick_upload" class="form-control">
+										<option value="1">Yes</option>
+										<option value="0">No</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Choose Design Template:</td>
+								<td>
+									<select onchange="PPADMIN.changeOpts()" class="txt-input" style="height:28px; border:dotted 1px #2D5F77; width:300px" name="ppa_pick" id="ppa_pick">
+										<option value="-1">None</option>
+									</select>
+									<span id="viewSpan"></span>
+									<span style="font-size:10px; color:#000; padding-top:10px; padding-left:20px;">
+										<a href="https://pitchprint.net/admin/designs" target="_blank"><i>Create New Designs</i></a>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+			
+			]]></add>
+		</operation>
+        <operation info="Appends the web2print specific details to a new web2print option">
+            <search position="before"><![CDATA[if (ui.item.type == 'text') {]]></search>
+            <add><![CDATA[ 
+                if (ui.item.type == 'web2print') {
+                    html += '    <input id="web2print_option_values" type="hidden" name="product_option[' + option_row + '][option_value]" value="" />';
+                    html += $("#web2print_option_form").html();
+                }
+            ]]></add>
+		</operation>
+	</file>
+    <file name="admin/view/template/sale/order_info.tpl">
+		<operation info="Javascripts needed for Web2print execution">
+				<search position="bottom"></search>
+				<add><![CDATA[ 
+                    <script type="text/javascript">
+		 				var PPADMIN = window.PPADMIN; if (typeof PPADMIN === 'undefined') window.PPADMIN = PPADMIN = { version: '8.3.0', readyFncs: [] };
+						
+						PPADMIN.vars = {
+							cdnBase: '//dta8vnpq1ae34.cloudfront.net/',
+							rscBase: '//s3.amazonaws.com/pitchprint.rsc/',
+							buildPath: 'app/83/',
+							runtimeBase: 'https://pitchprint.net/api/runtime/',
+							adminPath: 'https://pitchprint.net/admin/'
+						}
+						
+						PPADMIN.readyFncs.push('init');
+						if (typeof PPADMIN.start !== 'undefined') PPADMIN.start();
+                    </script>
+					<script type="text/javascript" src="https://dta8vnpq1ae34.cloudfront.net/app/83/js/a.oc.js"></script>
+				]]></add>
+		</operation>
+		<operation>
+				<search position="replace"><![CDATA[<?php if ($option['type'] != 'file') { ?>]]></search>
+				<add><![CDATA[
+				<?php 
+					if ($option['type'] == 'web2print') {
+						?> &nbsp;<small pp-value="true" ><?php echo $option['value']; ?></small> <?php
+					} elseif ($option['type'] != 'file') { ?>
+				]]></add>
+		</operation>
+	</file>
+	
+	
+	
+	
+    
+    <file name="catalog/language/*/common/footer.php">
+		<operation error="skip">
+				<search position="replace"><![CDATA[<br />]]></search>
+				<add><![CDATA[
+					&amp; <a target="_blank" href="http://pitchprint.com">PitchPrint</a><br />
+				]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/common/header.php">
+		<operation error="log">
+				<search position="before"><![CDATA[$this->data['base'] = $server;]]></search>
+				<add><![CDATA[
+					$GLOBALS['pitchprint'] = array();
+				]]></add>
+		</operation>
+	</file>
+	
+    <file error="log" name="system/library/cart.php">
+		<operation>
+				<search position="replace"><![CDATA[$this->data[$key] = array(]]></search>
+				<add><![CDATA[
+						//W2P....
+							$w2pqry = $this->db->query("SELECT * FROM `" . DB_PREFIX . "option` WHERE `type` = 'web2print'");
+							$web2Print_option = $w2pqry->row['option_id'];
+							$wquery = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option WHERE option_id=" . $web2Print_option . " and product_id=" . $product_query->row['product_id']);
+							//====================
+							$current_design_id = "0";
+							$current_upload_opt = "0";
+							if ($wquery->num_rows) {
+								$current_option = $wquery->row['option_value'];
+								$temp_array = explode(":", $current_option);
+								if (count($temp_array) > 1) {
+									$current_design_id = $temp_array[0];
+									$current_upload_opt = $temp_array[1];
+								}
+							}
+							$this->data[$key] = array(
+								'design_id'		   => $current_design_id,
+								'upload'		   => $current_upload_opt,
+				]]></add>
+		</operation>
+		<operation>
+				<search position="replace"><![CDATA[} elseif ($option_query->row['type'] == 'text' ||]]></search>
+				<add><![CDATA[} elseif ($option_query->row['type'] == 'web2print' || $option_query->row['type'] == 'text' ||]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/checkout/cart.php">
+		<operation>
+				<search position="replace"><![CDATA[if ($option['type'] != 'file') {]]></search>
+				<add><![CDATA[
+					if ($option['type'] == 'web2print') {
+						$value = '<span pp-image="' . $image . '" pp-value="' . $option['option_value'] . '"></span>';
+					} elseif ($option['type'] != 'file') {
+				
+				]]></add>
+		</operation>
+		<operation>
+				<search position="replace"><![CDATA[(utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)]]></search>
+				<add><![CDATA[$value]]></add>
+		</operation>
+		<operation>
+				<search position="after"><![CDATA[$product['key'],]]></search>
+				<add><![CDATA[
+					'design_id'   => $product['design_id'],
+					'upload'   => $product['upload'],
+				]]></add>
+		</operation>
+	</file>
+    <file name="catalog/controller/checkout/confirm.php">
+		<operation>
+				<search index="2" position="replace"><![CDATA[if ($option['type'] != 'file') {]]></search>
+				<add><![CDATA[
+					if ($option['type'] == 'web2print') {
+	  					$value = '<span pp-value="' . $option['option_value'] . '"></span>';
+					}elseif ($option['type'] != 'file') {
+				
+				]]></add>
+		</operation>
+		<operation>
+				<search position="after"><![CDATA[$this->data['column_name'] = $this->language->get('column_name');]]></search>
+				<add><![CDATA[
+					$this->data['column_image'] = $this->language->get('column_image');
+				]]></add>
+		</operation>
+		<operation>
+				<search position="after"><![CDATA[$this->data['products'][] = array(]]></search>
+				<add><![CDATA[
+					'otherthumbs'    => $thumbs,
+				]]></add>
+		</operation>
+		<operation>
+				<search position="after"><![CDATA[$option_data = array();]]></search>
+				<add><![CDATA[
+					$thumbs = array();
+				]]></add>
+		</operation>
+		<operation>
+				<search position="replace"><![CDATA[(utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)]]></search>
+				<add><![CDATA[$value]]></add>
+		</operation>
+	</file>
+    
+    
+    
+    <file name="catalog/controller/account/account.php">
+		<operation>
+				<search position="after"><![CDATA[$this->language->load('account/account');]]></search>
+				<add><![CDATA[
+					$this->load->model('pitchprint/process');
+                    $pdetails = $this->model_pitchprint_process->getPitchDetails();
+					
+					$GLOBALS['pitchprint']['js_dump'] = "
+						PPCLIENT.vars.userId = '" . $this->session->data['customer_id'] . "';
+						PPCLIENT.vars.apiKey = '" . $pdetails['apikey'] . "';
+						PPCLIENT.vars.langCode = '" . $this->language->get('code') . "';
+						
+						PPCLIENT.afterValidation = 'fetchUserProjects';
+						PPCLIENT.readyFncs.push('loadLang', 'validate');
+					";
+				]]></add>
+		</operation>
+	</file>
+    <file name="catalog/view/theme/*/template/account/account.tpl">
+		<operation>
+				<search position="before"><![CDATA[<h2><?php echo $text_my_account; ?></h2>]]></search>
+				<add><![CDATA[
+					<h2 pp-data="text_my_recent"></h2>
+					  <div class="content" id="pp_mydesigns_div"></div>
+					  <script src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
+				]]></add>
+		</operation>
+	</file>
+    <file name="catalog/controller/account/order.php">
+		<operation>
+				<search position="replace"><![CDATA[if ($option['type'] != 'file') {]]></search>
+				<add><![CDATA[
+					if ($option['type'] == 'web2print') {
+						$value = '<span pp-value="' . $option['value'] . '"></span>';
+					} elseif ($option['type'] != 'file') { 
+				]]></add>
+		</operation>
+		<operation>
+				<search position="replace"><![CDATA['value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)]]></search>
+				<add><![CDATA['value' => $value]]></add>
+		</operation>
+	</file>
+	
+	<file error="log" name="catalog/model/checkout/order.php">
+		<operation>
+			<search error="log" position="before"><![CDATA[$this->cache->delete('product');]]></search>
+			<add><![CDATA[
+				//if (!$order_info['order_status_id'] && $order_status_id == 5) {
+				if ((int)$order_status_id === 5) {
+					$order_product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+					$items = array();
+					foreach ($order_product_query->rows as $product) {
+						$option_data = array();
+						$pprint = '';
+						
+						$order_option_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$product['order_product_id'] . "'");
+						
+						foreach ($order_option_query->rows as $option) {
+							if ($option['type'] == 'web2print') {
+								$pprint = rawurldecode($option['value']);
+							}
+						}
+						
+						$items[] = array(
+							'name'     => $product['name'],
+							'id'    => $product['product_id'],
+							'pitchprint'   => $pprint,
+							'qty' => $product['quantity']
+						);
+					}
+					
+					$items = json_encode($items);
+					
+					$timestamp = time();
+					$this->load->model('setting/setting');
+					$pitch_s = $this->model_setting_setting->getSetting('pitchprint');
+					
+					$pitchprint_api_value = $pitch_s['apikey'];
+					$pitchprint_secret_value = $pitch_s['secretkey'];
+					$signature = md5($pitchprint_api_value . html_entity_decode($pitchprint_secret_value) . $timestamp);
+					$body = array (
+						'products' => $items,
+						'client' => 'oc',
+						'billingEmail' => $order_info['email'],
+						'billingPhone' => $order_info['telephone'],
+						'shippingName' => $order_info['shipping_firstname'] . ' ' . $order_info['shipping_lastname'],
+						'shippingAddress' => $order_info['shipping_company'] . ',\n' . $order_info['shipping_address_1'] . ',\n' . $order_info['shipping_address_2'] . ',\n' . $order_info['shipping_city'] . ',\n' . $order_info['shipping_zone'] . ',\n' . $order_info['shipping_postcode'] . ',\n' . $order_info['shipping_country'],
+						'orderId' => $order_id,
+						'customer' => $order_info['customer_id'],
+						'apiKey' => $pitchprint_api_value,
+						'signature' => $signature,
+						'timestamp' => $timestamp
+					);
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+					curl_setopt($ch, CURLOPT_URL, "https://pitchprint.net/api/runtime/event-status-completed");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($body));
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_TIMEOUT, 300);
+					
+					$output = curl_exec($ch);
+					$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+					$content_type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+					$curlerr = curl_error($ch);
+					curl_close($ch);
+					
+					if ($curlerr && $http_status != 200) {
+						$error_message = array('error' => $curlerr);
+						error_log(print_r($error_message, true));
+					}
+				}
+			]]></add>
+		</operation>
+	</file>     
+    
+    <file name="catalog/model/catalog/product.php">
+		<operation>
+			<search index="1" position="before"><![CDATA[if ($query->num_rows) {]]></search>
+			<add><![CDATA[
+					//pitchprint tweaks...
+					if (isset($this->session->data['w2p_projects'][$product_id]['image'])) {
+						$imgs = explode(',', $this->session->data['w2p_projects'][$product_id]['image']);
+						$query->row['image'] = $imgs[0];
+					}
+					
+					$w2pqry = $this->db->query("SELECT * FROM `" . DB_PREFIX . "option` WHERE `type` = 'web2print'");
+					$web2print_option = $w2pqry->row['option_id'];
+					$wquery = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option WHERE option_id=" . $web2print_option . " and product_id=" . $product_id);
+					//====================
+					if ($wquery->num_rows) {
+						$current_option = $wquery->row['option_value'];
+						$temp_array = explode(":", $current_option);
+						if (count($temp_array) > 1) {
+							$current_design_id = $temp_array[0];
+							$current_upload_opt = $temp_array[1];
+						}else {
+							$current_design_id = "0";
+							$current_upload_opt = "0";
+						}
+						$query->row['design_id'] = $current_design_id;
+						$query->row['upload'] = $current_upload_opt;
+					}else{
+						$current_design_id = "0";
+						$current_upload_opt = "0";
+					}
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[=> $query->row['product_id'],]]></search>
+			<add><![CDATA[
+						
+					'design_id'       => $current_design_id,
+					'upload'       => $current_upload_opt,
+						
+			]]></add>
+		</operation>
+	</file>
+    <file name="catalog/controller/product/product.php">
+		<operation info="Web2print product option">
+				<search position="before"><![CDATA[} elseif ($option['type'] == 'text' || $option['type'] == 'textarea' || $option['type'] == 'file' || $option['type'] == 'date' || $option['type'] == 'datetime' || $option['type'] == 'time') {]]></search>
+				<add><![CDATA[} elseif ($option['type'] == 'web2print') {
+					$this->data['options'][] = array(
+						'product_option_id' => $option['product_option_id'],
+						'option_id'         => $option['option_id'],
+						'name'              => $option['name'],
+						'type'              => $option['type'],
+						'option_value'      => "",
+						'required'          => $option['required']
+					);
+					
+                    $this->load->model('pitchprint/process');
+                    $pdetails = $this->model_pitchprint_process->getPitchDetails();
+                    $this->data['pitch_api'] = $pdetails['apikey'];
+					
+					$this->data['request_uri'] = htmlspecialchars_decode($this->request->server['REQUEST_URI']);
+					$this->data['customer_logged'] = $this->customer->isLogged();
+					
+					$GLOBALS['pitchprint']['pp_projects'] = isset($this->session->data['pp_projects']) ? $this->session->data['pp_projects'] : array();
+					if (!empty($product_info['design_id'])) $GLOBALS['pitchprint']['product_id'] = $product_info['product_id'];
+					$GLOBALS['pitchprint']['design_id'] = $this->data['design_id'] = $product_info['design_id'];;
+					$GLOBALS['pitchprint']['upload'] = $this->data['upload'] = $product_info['upload'];
+					$GLOBALS['pitchprint']['product_title'] = addslashes($this->data['heading_title']);
+					$GLOBALS['pitchprint']['lang'] = $this->language->get('code');
+
+					$GLOBALS['pitchprint']['pp_product_option_id'] = $option['product_option_id'];
+
+					$GLOBALS['pitchprint']['uri'] = htmlspecialchars_decode($this->request->server['REQUEST_URI']);
+					$GLOBALS['pitchprint']['customer_logged'] = $this->customer->isLogged();
+
+					if ($this->customer->isLogged()) {
+						$GLOBALS['pitchprint']['address_id'] = $this->customer->getAddressId();
+						$GLOBALS['pitchprint']['customer_id'] = $this->session->data['customer_id'];
+						$this->load->model('account/address');
+						$pp_addr = $this->model_account_address->getAddress($this->customer->getAddressId());
+						
+						$GLOBALS['pitchprint']['customer_address'] = "";
+						if (!empty($pp_addr['company'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['company']) . '\n';
+						if (!empty($pp_addr['address_1'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['address_1']) . '\n';
+						if (!empty($pp_addr['address_2'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['address_2']) . '\n';
+						if (!empty($pp_addr['city'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['city'] . ((!empty($pp_addr['postcode'])) ? " {$pp_addr['postcode']}" : '')) . '\n';
+						if (!empty($pp_addr['zone'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['zone']) . '\n';
+						if (!empty($pp_addr['country'])) $GLOBALS['pitchprint']['customer_address'] .= addslashes($pp_addr['country']);
+						
+						$GLOBALS['pitchprint']['customer_address'] = $GLOBALS['pitchprint']['customer_address'];
+						
+						$GLOBALS['pitchprint']['customer_data'] = array(
+							'email' => $this->customer->getEmail(),
+							'name' => addslashes($this->customer->getFirstName() . ' ' . $this->customer->getLastName()),
+							'firstname' => addslashes($this->customer->getFirstName()),
+							'lastname' => addslashes($this->customer->getLastName()),
+							'telephone' => $this->customer->getTelephone(),
+							'fax' => $this->customer->getFax()
+						);
+					}
+					$GLOBALS['pitchprint']['file_core'] = true;
+					
+				]]></add>
+		</operation>
+		
+        <operation>
+				<search position="before"><![CDATA[$this->load->model('catalog/category');]]></search>
+				<add><![CDATA[
+                    if (isset($this->request->get['productId'])) {
+						$product_id = $this->request->get['productId'];
+						
+						if (isset($this->request->post['clear'])) {
+							if (isset($this->session->data['pp_projects'])) {
+								if (isset($this->session->data['pp_projects'][$product_id])) {
+									unset($this->session->data['pp_projects'][$product_id]);
+								}
+							}
+							exit();
+						}
+						
+						if (!isset($this->session->data['pp_projects'])) {
+							$this->session->data['pp_projects'] = array();
+							$this->session->data['pp_projects'][$product_id] = array();
+						}else if (!isset($this->session->data['pp_projects'][$product_id])) {
+							$this->session->data['pp_projects'][$product_id] = array();
+						}
+						
+						$_SESSION['pp_projects'][$_GET['productId']] = $_POST['values'];
+						
+						if (isset($this->request->post['clone'])) {
+							echo $this->url->link('product/product', 'product_id=' . $product_id);
+						}
+						exit();
+					}
+				]]></add>
+		</operation>
+	</file>
+	<file error="log" name="catalog/controller/common/footer.php">
+		<operation error="log">
+				<search position="before"><![CDATA[$this->load->model('catalog/information');]]></search>
+				<add><![CDATA[
+					$GLOBALS['pitchprint']['api'] = $this->config->get('apikey');
+					$GLOBALS['pitchprint']['lang'] = $this->language->get('code');
+				]]></add>
+		</operation>
+	</file>
+	<file error="skip" name="catalog/view/theme/*/template/mail/order.tpl">
+		<operation error="skip">
+				<search position="replace"><![CDATA[&nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>]]></search>
+				<add><![CDATA[
+				&nbsp;<small> - <?php echo $option['name']; ?>: <?php echo (($option['name'] == "Web2Print") ? "Design" : $option['value']); ?></small>
+				]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/checkout/confirm.tpl">
+		<operation error="log">
+				<search position="bottom"></search>
+				<add><![CDATA[
+					<script>PPCLIENT.sortCart()</script>
+				]]></add>
+		</operation>
+	</file>
+	
+	<file name="catalog/view/theme/*/template/common/footer.tpl,catalog/view/theme/*/template/common/footer_bottom.tpl">
+		<operation error="log">
+				<search position="top"><![CDATA[</body>]]></search>
+				<add><![CDATA[
+					<!-- Loading PitchPrint Javascripts and Styles -->
+					<link href="catalog/view/javascript/jquery/colorbox/colorbox.css" rel="stylesheet">
+					<?php
+						if (isset($GLOBALS['pitchprint']['file_core'])) {
+							echo '<script src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js" type="text/javascript"></script> ';
+							echo '<script src="https://dta8vnpq1ae34.cloudfront.net/app/83/js/app.js" type="text/javascript"></script>';
+						}
+					?>
+					<script src="https://dta8vnpq1ae34.cloudfront.net/app/83/js/client.js" type="text/javascript"></script>
+					<script>
+						jQuery(function($) { 
+						var PPCLIENT = window.PPCLIENT; if (typeof PPCLIENT === 'undefined') window.PPCLIENT = PPCLIENT = { version: '8.3.0', readyFncs: [] };
+						<?php
+							if (isset($GLOBALS['pitchprint']['product_id'])) {
+								$pp_mode = 'new';
+								$pp_now_value = '';
+								$pp_project_id = '';
+								$pp_previews = '';
+								$product_id = $GLOBALS['pitchprint']['product_id'];
+								if (!isset($GLOBALS['pitchprint']['pp_projects'])) $GLOBALS['pitchprint']['pp_projects'] = array();
+								if (isset($GLOBALS['pitchprint']['pp_projects'][$product_id])) {
+									$opt_ = json_decode(rawurldecode($GLOBALS['pitchprint']['pp_projects'][$product_id]), true);
+									if ($opt_['type'] === 'u') {
+										$pp_upload_ready = true;
+										$pp_mode = 'upload';
+									} else if ($opt_['type'] === 'p') {
+										$pp_mode = 'edit';
+										$pp_project_id = $opt_['projectId'];
+										$pp_previews = $opt_['numPages'];
+									}
+									$pp_now_value = $GLOBALS['pitchprint']['pp_projects'][$product_id];
+								}
+						?>
+							
+							PPCLIENT.vars = {
+								client: 'oc',
+								uploadUrl: './uploads/',
+								apiBase: 'https://pitchprint.net/api/front/',
+								cdnBase: '//dta8vnpq1ae34.cloudfront.net/',
+								rscBase: '//s3.amazonaws.com/pitchprint.rsc/',
+								buildPath: 'app/83/',
+								ocVersion: 1,
+								
+								functions: { },
+								
+								cValues: '<?php echo addslashes($pp_now_value); ?>',
+								projectId: '<?php echo $pp_project_id; ?>',
+								userId: '<?php echo isset($GLOBALS['pitchprint']['customer_logged']) ? $GLOBALS['pitchprint']['customer_id'] : 'guest'; ?>',
+								previews: '<?php echo $pp_previews; ?>',
+								mode: '<?php echo $pp_mode; ?>',
+								langCode: '<?php echo $GLOBALS['pitchprint']['lang']; ?>',
+								enableUpload: <?php echo ($GLOBALS['pitchprint']['upload'] != "0" ? 'true' : 'false'); ?>,
+								designId: '<?php echo $GLOBALS['pitchprint']['design_id']; ?>',
+								apiKey: '<?php echo $GLOBALS['pitchprint']['api']; ?>',
+								product: {
+									id: '<?php echo $product_id; ?>',
+									name: '<?php echo $GLOBALS['pitchprint']['product_title']; ?>'
+								},
+								<?php if (isset($GLOBALS['pitchprint']['customer_data'])) { ?>
+									userData: {
+										email: '<?php echo $GLOBALS['pitchprint']['customer_data']['email']; ?>',
+										name: '<?php echo $GLOBALS['pitchprint']['customer_data']['name']; ?>',
+										firstname: '<?php echo $GLOBALS['pitchprint']['customer_data']['firstname']; ?>',
+										lastname: '<?php echo $GLOBALS['pitchprint']['customer_data']['lastname']; ?>',
+										telephone: '<?php echo $GLOBALS['pitchprint']['customer_data']['telephone']; ?>',
+										fax: '<?php echo $GLOBALS['pitchprint']['customer_data']['fax']; ?>',
+										address: decodeURI('<?php echo trim($GLOBALS['pitchprint']['customer_address']); ?>')
+									},
+								<?php } ?>
+								ppOptionId: '<?php echo $GLOBALS['pitchprint']['pp_product_option_id']; ?>'
+							}
+							PPCLIENT.readyFncs.push('validate');
+						<?php } else { ?>
+							PPCLIENT.vars = {
+								client: 'oc',
+								uploadUrl: './uploads/',
+								apiBase: 'https://pitchprint.net/api/front/',
+								cdnBase: '//dta8vnpq1ae34.cloudfront.net/',
+								rscBase: '//s3.amazonaws.com/pitchprint.rsc/',
+								buildPath: 'app/83/',
+								apiKey: '<?php echo $GLOBALS['pitchprint']['api']; ?>',
+								langCode: '<?php echo $GLOBALS['pitchprint']['lang']; ?>',
+								functions: { },
+								ocVersion: 1
+							}
+							PPCLIENT.afterValidation = 'sortCart';
+							PPCLIENT.readyFncs.push('validate', 'loadStyle');
+						<?php 
+								if (isset($GLOBALS['pitchprint']['js_dump'])) echo $GLOBALS['pitchprint']['js_dump'];
+							} ?>
+							if (typeof PPCLIENT.start !== 'undefined') PPCLIENT.start();
+							});
+					</script>
+					
+					<!-- You can remove this if you want, but it helps propagate our site and will be nice if you could maintain it for us. It is totally invisible to visitors. Thank you. -->
+					<div style="opacity:0; width:0; height:0; postion:fixed; top:0; left:0"><a style="opacity:0; width:0; height:0;" target="_blank" href="http://pitchprint.com">Powered by PitchPrint</a></div>
+				]]></add>
+		</operation>
+	</file>
+</modification>
