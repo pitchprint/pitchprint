@@ -106,6 +106,7 @@
 	"uploaded_files": "Hochgeladene Dateien",
 	"pdf_download": "Download PDF",
 	"design_saved": "Your design has been saved!",
+	"confirm_design": "Bestätigen Sie Ihr Design",
 	"modules": {
 		"variable-data": {
 			"title": "Kartensets gestalten",
