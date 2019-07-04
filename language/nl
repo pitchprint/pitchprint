@@ -145,6 +145,10 @@
 			"add": "Add Page",
 			"delete": "Delete Page",
 			"swap": "Change this Page"
+		},
+		"design-selector":{
+			"warning" : "Ander ontwerp";
+			"warning_title" : "Je wijzigingen gaan verloren. Wil je doorgaan?";
 		}
 	},
 	"page_delete_alert": "This will delete the current design page.<br/>Do you wish to continue?",
