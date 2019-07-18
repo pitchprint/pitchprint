@@ -183,9 +183,10 @@
 			"swap": "Change this Page",
 			"sort": "Drag to re-arrange or delete pages"
 		},
-		"design-selector": {
-			
-		},
+		"design-selector": `{
+			"warning_title": "Change Design",
+			 "warning": "You may loose any edits you have done. Do you wish to continue?"
+		}`,
 		"photo": {
 			"button_tip": "Photo Prints",
 			"intro": "Start by importing your Photos or drag them into this space",
