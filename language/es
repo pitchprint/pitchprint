@@ -145,6 +145,9 @@
 			"add": "Añadir Página",
 			"delete": "Borrar Página",
 			"swap": "Cambiar esta Página"
+		},
+		"design-selector": {
+			"title": "cambia tu diseño"
 		}
 	},
 	"page_delete_alert": "Esto borrará el diseño de página actual.<br/>¿Desea continuar?",
