@@ -146,6 +146,10 @@
 			"add": "Add Page",
 			"delete": "Delete Page",
 			"swap": "Change this Page"
+		},
+		"design-selector": {
+			"reload_design": "Verwissel van design",
+			"reload_alert": "Je bewerkingen gaan verloren. Wil je verder gaan?"
 		}
 	},
 	"page_delete_alert": "This will delete the current design page.<br/>Do you wish to continue?",
