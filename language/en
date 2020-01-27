@@ -209,5 +209,14 @@
 			"remove_title": "Remove Photo",
 			"confirm_remove": "Are you sure you want to remove this Photo?"
 		}
-	}
+	},
+	"draw_tip": "Draw on Canvas",
+	"undock": "Convert to a Picture Item",
+	"dock": "Apply as Background Image",
+	"preview_tip": "Preview your work",
+	"text_size_tip": "Text Size",
+	"transform_tip": "transform",
+	"crop": "Crop Photo",
+	"copy_styles": "Copy Styles",
+	"cancel": "Cancel"
 }
