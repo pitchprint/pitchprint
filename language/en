@@ -5,7 +5,6 @@
 	"select_style" : "Select a Style",
 	"toggle_textbox": "Toggle TextBox mode",
 	"reload_tip" : "Reload Design",
-	"reload_design" : "Reload Design?",
 	"bg_transparency_tip" : "Adjust background transparency",
 	"paste_tip" : "PASTE",
     "undo_tip" : "UNDO",
@@ -20,6 +19,10 @@
     "edit_bg_tip" : "Edit Background Image",
 	"upload_tip" : "Click to Upload my files",
 	"custom_color_tip" : "Add Custom Color",
+	"no_fill" : "No Fill",
+	"text_fill_mode" : "Text Fill Mode",
+	"qr_code" : "Add QR Code",
+	"new_cat" : "Create a new category",
 	"ungroup_tip" : "Ungroup Items",
 	"group_tip" : "Group Items",
 	"your_pictures_title" : "upload",
@@ -60,7 +63,8 @@
     "picture_added" : "Image added to canvas!",
     "edit_image" : "EDIT PICTURE",
     "my_pictures" : "My Pictures",
-    "close_alert" : "This will close the application and take you back.<br/>Do you wish to continue?",
+    "palette_mode" : "Toggle Palette Mode",
+    "close_alert" : "This will close the app and take you back.<br/>Do you wish to continue?",
     "button_label_yes" : "Yes",
     "button_label_no" : "No",
     "button_label_ok" : "Ok",
@@ -87,6 +91,7 @@
     "facebook_label" : "Add facebook pictures",
     "facebook_login_button" : "Login to Facebook",
     "button_info" : "View Info",
+    "help" : "Help",
     "saved_projects" : "Saved Projects",
     "view_my_saved_projects" : "View my Saved Projects",
     "text_my_recent" : "My saved designs",
@@ -100,7 +105,6 @@
     "design" : "Design",
     "file_upload" : "File Upload",
     "customize_design" : "Customize Now",
-    "confirm" : "Confirm your design",
     "edit_design" : "Edit your design",
     "start_over" : "Create another one",
     "upload_files" : "Upload your art work",
@@ -120,6 +124,7 @@
 	"design_saved" : "Your design has been saved!",
 	"gallery_search" : "Type to search gallery..",
 	"search" : "Search",
+	"remote_assist" : "Remote Assist",
 	"pixabay_error" : "Please activate your Pixabay key",
 	"save_later" : "Save for Later",
 	"resume_design" : "Resume Design",
@@ -141,6 +146,8 @@
 	"welcome": "Welcome",
 	"close_title": "Close Application ?",
 	"poor_browser": "We're sorry, your browser is outdated. Kindly try a different browser.",
+	"confirm_design": "Confirm your design",
+	"toggle_grid" : "Toggle Grid lines",
 	"modules" : {
 		"variable-data" : {
 			"title" : "Generate Variation designs",
@@ -181,11 +188,12 @@
 		"page-loader": {
 			"add": "Add this Page",
 			"delete": "Delete / re-Arrange Pages",
-			"swap": "Change this Page",
+			"swap": "Swap with this Page",
 			"sort": "Drag to re-arrange or delete pages"
 		},
 		"design-selector": {
-			
+			"warning_title": "Change Design",
+			"warning": "You may loose any edits you have done. Do you wish to continue?"
 		},
 		"photo": {
 			"button_tip": "Photo Prints",
