@@ -218,5 +218,17 @@
 	"transform_tip": "transform",
 	"crop": "Crop Photo",
 	"copy_styles": "Copy Styles",
-	"cancel": "Cancel"
+	"cancel": "Cancel",
+	"upload_description": "Upload Photos From",
+	"upload_computer" : "Computer",
+	"upload_phone": "Phone",
+	"close_title": "Close Application",
+	"fill_type": "Fill Type",
+	"solid": "Solid",
+	"linear": "Linear",
+	"stroke": "Stroke",
+	"fill": "Fill",
+	"add_color_tip": "Add New Color",
+	"save_color_tip": "Save New Color",
+	"radial": "Radial"
 }
