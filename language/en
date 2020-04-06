@@ -230,5 +230,9 @@
 	"fill": "Fill",
 	"add_color_tip": "Add New Color",
 	"save_color_tip": "Save New Color",
-	"radial": "Radial"
+	"radial": "Radial",
+	"bg_size": "Background Positioning",
+	"delete_bg": "Clear Background",
+	"stroke_width_tip": "Stroke Width",
+	"opacity_tip": "Transparency"
 }
