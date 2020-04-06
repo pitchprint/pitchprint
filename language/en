@@ -230,5 +230,15 @@
 	"fill": "Fill",
 	"add_color_tip": "Add New Color",
 	"save_color_tip": "Save New Color",
-	"radial": "Radial"
+	"radial": "Radial",
+	"preview": "Preview",
+	"submit": "Submit",
+	"path_tip": "Draw a Path",
+	"line_tip": "Draw a Line",
+	"rectangle_tip": "Draw a Rectangle",
+	"circle_tip": "Draw a Circle",
+	"bg_size": "Background Positioning",
+	"delete_bg": "Clear Background",
+	"stroke_width_tip": "Stroke Width",
+	"opacity_tip": "Transparency"
 }
