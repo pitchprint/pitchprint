@@ -192,6 +192,11 @@
 			"sort": "Drag to re-arrange or delete pages"
 		},
 		"design-selector": {
+			"title": "Designs",
+			"keep": "Keep Designing",
+			"use_new": "Use New Design",
+			"cancel": "Cancel",
+			"okay": "Ok",
 			"warning_title": "Change Design",
 			"warning": "You may loose any edits you have done. Do you wish to continue?"
 		},
@@ -208,6 +213,9 @@
 			"sizes": "Select Size",
 			"remove_title": "Remove Photo",
 			"confirm_remove": "Are you sure you want to remove this Photo?"
+		},
+		"data-form": {
+			"title": "Quick Fill"
 		}
 	},
 	"draw_tip": "Draw on Canvas",
@@ -223,6 +231,7 @@
 	"upload_computer" : "Computer",
 	"upload_phone": "Phone",
 	"close_title": "Close Application",
+	"no_fill_tip": "No Fill",
 	"fill_type": "Fill Type",
 	"solid": "Solid",
 	"linear": "Linear",
