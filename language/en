@@ -189,7 +189,7 @@
 			"add": "Add this Page",
 			"delete": "Delete / re-Arrange Pages",
 			"swap": "Swap with this Page",
-			"sort": "Drag to re-arrange or delete pages"
+			"sort": "Drag to rearrange or delete pages"
 		},
 		"design-selector": {
 			"title": "Designs",
