@@ -167,6 +167,8 @@
 			"confirm": "Wilt u meerdere kopieën van uw ontwerp maken met een CSV- of Excel-gegevensblad?",
 			"none": "Geen",
 			"input_title": "Voeg individuele records toe om meerdere pagina's te maken en Render wanneer u klaar bent om te verzenden",
+			"edit_record" : "Gegevens Bewerken",
+			"linkTitle": "Koppel gegevens aan items",
 			"add_record": "Record toevoegen"
 		},
 		"calendar": {
@@ -189,7 +191,8 @@
 		"page-loader": {
 			"add": "Pagina toevoegen",
 			"delete": "Pagina verwijderen",
-			"swap": "Wijzig deze pagina"
+			"swap": "Wijzig deze pagina",
+			"sort": "Sleep om pagina's opnieuw te ordenen of te verwijderen"
 		},
 		"design-selector": {
 			"title": "Ontwerpen",
