@@ -150,11 +150,11 @@
 	},
 	"page_delete_alert": "Dies löscht die aktuelle Design-Seite. <br/>Wollen Sie fortfahren?",
 	"gallery_search": "In der Galerie suchen..",
-	"save_later": "Für später speichern"
+	"save_later": "Für später speichern",
 	"toggle_grid" : "Gitterlinien umschalten",
 	"draw_tip": "Zeichnen auf der Leinwand",
 	"delete_bg": "Hintergrund löschen",
 	"preview": "Vorschau",
-	"preview_tip": "Vorschau ansehen",
+	"preview_tip": "Vorschau ansehen"
 	
 }
