@@ -149,5 +149,13 @@
 	},
 	"page_delete_alert": "This will delete the current design page.<br/>Do you wish to continue?",
 	"gallery_search": "Type to search gallery..",
-	"save_later": "Save for Later"
+	"save_later": "Save for Later",
+	"cut" : "切り取り",
+	"copy" : "コピー",
+	"delete" : "削除",
+	"bg" : "背景変更",
+	"paste" : "貼り付け",
+	"crop_yes" : "適用する",
+	"stage1" : "QRコードをスキャン",
+	"stage2" : "画像をお選びください"
 }
