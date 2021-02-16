@@ -3,7 +3,7 @@
 	"my_colors": "Meine Farben",
 	"edit": "BEARBEITEN",
 	"select_style": "Stil auswählen",
-	"toggle_textbox": "Toggle TextBox mode",
+	"toggle_textbox": "Toggle TextBox Mode",
 	"reload_tip": "Design neu laden",
 	"bg_transparency_tip": "Hintergrundtransparenz anpassen",
 	"paste_tip": "EINFÜGEN",
@@ -23,13 +23,13 @@
 	"exit_group_tip": "Hier klicken um die Gruppenbearbeitung zu verlassen",
 	"help_stage": "Das ist die Arbeitsfläche Ihres Designs. Alle Elemente, die sich hier befinden, werden später auch gedruckt.",
 	"help_panels": "Hier können Sie den Hintergrund festlegen, Bilder aus sozialen Netzwerken verwenden, eigene Bilder hochladen und Texte gestalten.",
-	"help_panels_menus": "MIt diesen Buttons navigieren Sie durch die untenstehenden Tabs.",
+	"help_panels_menus": "Mit diesen Buttons navigieren Sie durch die untenstehenden Tabs.",
 	"help_title": "Die aktuelle Seite",
 	"help_reload": "Lädt das Design neu und startet von vorne, alle Änderungen werden verworfen.",
 	"help_close": "Schließt den Designeditor und verwirft Ihre Änderungen.",
 	"help_finish": "Klicken Sie hier, wenn Sie Ihr Design beendet haben, um eine Vorschau zu erzeugen und es zu übermitteln.",
 	"help_secondary_menus": "Hier finden Sie weitere Menus wie Ausrichtung von Elementen, Rückgängig, Wiederholen, Zoom, Zwischenablage etc.",
-	"reload_alert": "HIermit verwerfen Sie Ihre Änderungen und kehren zur Originalvorlage zurück.<br/>Wollen Sie das wirklich?",
+	"reload_alert": "Hiermit verwerfen Sie Ihre Änderungen und kehren zur Originalvorlage zurück.<br/>Wollen Sie das wirklich?",
 	"customize_details": "Bitte passen Sie Ihre Details an",
 	"loading_text-arts": "Lade Text-Art",
 	"title_styles": "Text & Text-Stile hinzufügen",
@@ -102,10 +102,10 @@
 	"delete_message": "Wollen Sie das Design wirklich löschen?",
 	"navigate": "Wollen Sie Ihre gespeicherten Designs sehen?",
 	"pretext_title": "Bitte passen Sie Ihre Details an",
-	"custom_design": "Eigenes Design",
+	"custom_design": "Design auswählen und bearbeiten",
 	"uploaded_files": "Hochgeladene Dateien",
 	"pdf_download": "Download PDF",
-	"design_saved": "Your design has been saved!",
+	"design_saved": "Ihr Design wurde gespeichert!",
 	"confirm_design": "Bestätigen Sie Ihr Design",
 	"modules": {
 		"variable-data": {
@@ -148,7 +148,13 @@
 			"swap": "Change this Page"
 		}
 	},
-	"page_delete_alert": "This will delete the current design page.<br/>Do you wish to continue?",
-	"gallery_search": "Type to search gallery..",
-	"save_later": "Save for Later"
+	"page_delete_alert": "Dies löscht die aktuelle Design-Seite. <br/>Wollen Sie fortfahren?",
+	"gallery_search": "In der Galerie suchen..",
+	"save_later": "Für später speichern",
+	"toggle_grid" : "Gitterlinien umschalten",
+	"draw_tip": "Zeichnen auf der Leinwand",
+	"delete_bg": "Hintergrund löschen",
+	"preview": "Vorschau",
+	"preview_tip": "Vorschau ansehen"
+	
 }
