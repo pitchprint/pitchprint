@@ -3,7 +3,7 @@
 	"my_colors": "Minu värvid",
 	"edit": "Muuda",
 	"select_style" : "Valige stiil",
-	"toggle_textbox": "Lülita TextBoxi režiim sisse"",
+	"toggle_textbox": "Lülita TextBoxi režiim sisse",
 	"reload_tip" : "Lae kujundus uuesti",
 	"bg_transparency_tip" : "Reguleeri tausta läbipaistvust",
 	"paste_tip" : "KLEEBI",
@@ -22,13 +22,13 @@
 	"no_fill" : "EI TÄIDA",
 	"text_fill_mode" : "Teksti täitmise režiim",
 	"qr_code" : "Lisa QR kood",
-	"new_cat" : “Lisa uus katekooria”,
-	"ungroup_tip" : "Ungroup objektid", - 
+	"new_cat" : "Lisa uus katekooria",
+	"ungroup_tip" : "Ungroup objektid", 
 	"group_tip" : "Elemendid",
 	"your_pictures_title" : "Laadi Üles",
 	"your_pictures_tip" : "Minu Pildid",
 	"exit_group_tip" : "Klikki et väljuda “Group Edit mode”",
-	"help_stage": "See on Teie Disaini Lõuend. Mida saab siin kujundada.”
+	"help_stage": "See on Teie Disaini Lõuend. Mida saab siin kujundada.",
 	"help_panels" : "Siin saate määrata lõuendi tausta või lisada pilte Facebookist, Instagramist jne, samuti tekstielemente",
 	"help_panels_menus" : "Kasuta neid nuppe allolevatel vahelehtedel navigeerimiseks",
 	"help_title" : "See leht, millega Te praegu töötate",
@@ -36,10 +36,10 @@
 	"help_close" : "Kujundusredaktori sulgemiseks ja kujunduse viskamiseks",
 	"help_thumb_navigator" : "Siit valides sirvi oma lehti",
 	"help_finish": "Vajuta siia kui oled oma kujunduse lõpetanud ja eelvaadet näinud",
-	"help_secondary_menus": “Siin on täiendavad valikud klõpsamiseks, tagasivõtmiseks / uuesti tegemiseks, suumimiseks / vähendamiseks, kopeeritud üksuste kleepimiseks, grupi redigeerimisrežiimist väljumiseks jne. “,
-	"reload_alert":  “See kustutab teie praegused muudatused ja naaseb algsele kujundusele. <br/> Kas soovite jätkata?”
-	"page_delete_alert": " See kustutab praeguse kujunduslehe. <br/> Kas soovite jätkata? ",
-	"customize_details" : "Kohanda oma detailidega”
+	"help_secondary_menus": "Siin on täiendavad valikud klõpsamiseks, tagasivõtmiseks / uuesti tegemiseks, suumimiseks / vähendamiseks, kopeeritud üksuste kleepimiseks, grupi redigeerimisrežiimist väljumiseks jne. ",
+	"reload_alert":  "See kustutab teie praegused muudatused ja naaseb algsele kujundusele. <br/> Kas soovite jätkata?",
+	"page_delete_alert": "See kustutab praeguse kujunduslehe. <br/> Kas soovite jätkata? ",
+	"customize_details" : "Kohanda oma detailidega",
 	"loading_text-arts": "Teksti-art laadimine", 
 	"text_tip" : "teksti ja tekstistiilide lisamine",
 	"text_title" : "Tekst",
@@ -52,11 +52,11 @@
 	"instagram_title": "",
     "or" : "Or",
     "add_files" : "Vajuta et failid lisada",
-    "upload_error" : "Vabandame, esines viga failide üleslaadmisel. Palun kontrollige oma internetiühendust ja proovige uuesti.” 
-    "upload_complete" : "Üleslaadmine õnnestus!”,
-    "pick_design" :  “Vali disain siit”,
-    "customize_design2" : “Kujunda ise”,
-    "text_cancelled" : "Tekst tühistatud”
+    "upload_error" : "Vabandame, esines viga failide üleslaadmisel. Palun kontrollige oma internetiühendust ja proovige uuesti.", 
+    "upload_complete" : "Üleslaadmine õnnestus!",
+    "pick_design" :  "Vali disain siit",
+    "customize_design2" : "Kujunda ise",
+    "text_cancelled" : "Tekst tühistatud",
     "click_to_add_text" : " Vajuta lõuendile, et lisada uus tekst ",
     "text_added" : "Trüki, et muuta teksti.", 
     "shape_added" : "Lõuendile on lisatud kuju!",
@@ -71,17 +71,17 @@
     "button_label_cancel" : "Loobu",
     "file_upload_error" : " Opss, fail on liiga suur või seda ei toetata. Proovige uuesti ", 
     "backgrounds_tip" : "Valige taust", 
-    "pictures_tip" : " Lisa pilte oma disainile ", 
-    "finish_message" : “Nii hakkab Teie disain välja nägema. Kas soovite ära saata?”,
+    "pictures_tip" : "Lisa pilte oma disainile ", 
+    "finish_message" : "Nii hakkab Teie disain välja nägema. Kas soovite ära saata?",
     "processing" : " Töötleb..", 
     "loading" : " Laeb..", 
     "loading_background" : " Laeb tausta..", 
     "loading_shape" : " Laeb kuju..", 
     "loading_image" : "Laeb pilti..",
-	"error_loading_design": " Vabandust! Kahjuks ilmnes viga kujunduse laadimisel. Palun värskendage brauserit
+	"error_loading_design": "Vabandust! Kahjuks ilmnes viga kujunduse laadimisel. Palun värskendage brauserit",
     "error" : " Vabandust, ilmnes viga..", 
     "network_error" : "Võrgu viga. Palun proovige uuesti ..",
-    "canvas_size" : “Lõuendi suurus”,
+    "canvas_size" : "Lõuendi suurus",
     "bg_crop_message" : " Palun muutke kõigepealt pildi suurust ja kärpige ",
     "saving_preview" : "Eelvaate salvestamine ...",
     "saving_design" : "Kujunduse salvestamine ..",
@@ -91,11 +91,11 @@
     "facebook_label" : "Lisa facebooki pilte",
     "facebook_login_button" : "Logi sisse Facebooki",
     "button_info" : " Kuva info ", 
-    "help" : "Abi"
+    "help" : "Abi",
     "saved_projects" : "Salvestatud projektid",
     "view_my_saved_projects" : "Kuva minu salvestatud projektid",
     "text_my_recent" : "Minu salvestatud kujundused",
-    "resume_design" : "Jätka / telli kujundus uuesti"
+    "resume_design" : "Jätka / telli kujundus uuesti",
     "duplicate_design" : "Kopeeri disain",
 
     "delete_design" : "Kustuta kujundus",
@@ -180,19 +180,19 @@
 		"remix": {
 			"tip" : "Lisage need fotod juhuslikult lõuendile", 
 			"help" : "See segab teie fotod juhuslikult kujundusse",
-			"help_title" : "Remix Photos" "Fotode segamine"
+			"help_title" : "Fotode segamine"
 		},
 		"canvas-adjuster" : {
 			"tip" : "Kohanda oma lõuendi suurust",
 			"help" : "Lõuendi mõõtme kohandamiseks klõpsake siia" 
 		},
-		"page-loader": { "lehelaadija": {
+		"page-loader": {
 			"add": "Lisa see leht", 
 			"delete": "Lehekülgede kustutamine / ümberkorraldamine",
 			"swap": "Vaheta selle lehega", 
 			"sort": "Lohistage lehtede ümberkorraldamiseks või kustutamiseks"
 		},
-		"design-selector": { "kujunduse sektor": {
+		"design-selector": {
 			"title": "Kujundused",
 			"keep": "Jätka kujundamist",
 			"use_new": "Kasuta uut kujundust",
@@ -201,8 +201,8 @@
 			"warning_title": "Muuda kujundust",
 			"warning": "Võite kaotada kõik teie tehtud muudatused. Kas soovite jätkata?"
 		},
-		"photo": { "foto": {
-			"button_tip": "Photo Prints", 
+		"photo": {
+			"button_tip": "Foto Prints", 
 			"intro": "Alustage oma fotode importimisega või lohistage need siia",
 			"welcome": "Kui olete oma fotod valmis saanud, klõpsake nende lisamiseks printimisvalikusse",
 			"btn_upload" : "Laadi arvutist üles",
@@ -215,7 +215,7 @@
 			"remove_title": "Eemalda foto",
 			"confirm_remove": "Kas olete kindel, et soovite selle foto eemaldada?"
 		},
-		"data-form": { "andmevorm": {
+		"data-form": {
 			"title": "Kiire täitmine" 
 		}
 	},
@@ -225,17 +225,17 @@
 	"preview_tip": "Kuva oma töö",
 	"text_size_tip": "Teksti suurus",
 	"transform_tip": "Muuda",
-	"crop": "Crop Photo", "Foto kärpimine", 
-	"copy_styles": "Copy Styles", "Kopeeri stiilid",
-	"cancel": "Cancel", "tühista", 
+	"crop": "Foto kärpimine",
+	"copy_styles": "Kopeeri stiilid",
+	"cancel": "tühista", 
 	"upload_description": "Laadige fotod üles",
 	"upload_computer" : "Arvuti",
 	"upload_phone": "Telefon",
 	"close_title": "Sulge rakendus",
-	"no_fill_tip": "No Fill", "Täitet pole",
-	"fill_type": "Fill Tüüp", "Täitmise tüüp",
-	"solid": "Solid"
-	"linear": "Linear"
+	"no_fill_tip": "Täitet pole",
+	"fill_type": "Täitmise tüüp",
+	"solid": "Solid",
+	"linear": "Linear",
 	"stroke": "Stroke", 
 	"fill": "Fill", 
 	"add_color_tip": "Lisa uus värv",
