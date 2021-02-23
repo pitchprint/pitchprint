@@ -37,7 +37,7 @@
 	"help_thumb_navigator" : "選択してページを移動する",
 	"help_finish": "デザインが完成したら、プレビューボタンを押してください",
 	"help_secondary_menus": "その他メニュー：垂直方向の位置、元に戻す / やり直し、拡大 / 縮小、貼り付け、グループ編集モードの終了など",
-	"reload_alert": "現在のデザインを削除し、はじめからやり直しますs。<br/>よろしいですか？",
+	"reload_alert": "現在のデザインを削除し、はじめからやり直します。<br/>よろしいですか？",
 	"page_delete_alert": "現在のデザインを削除します。<br/>よろしいですか？",
 	"customize_details" : "詳細情報のカスタマイズ",
 	"loading_text-arts": "テキストアートを読み込み中",
@@ -249,5 +249,13 @@
 	"bg_size": "背景の配置",
 	"delete_bg": "背景を削除",
 	"stroke_width_tip": "線の太さ",
-	"opacity_tip": "透明度"
+	"opacity_tip": "透明度",
+	"cut" : "切り取り",
+	"copy" : "コピー",
+	"delete" : "削除",
+	"bg" : "背景変更",
+	"paste" : "貼り付け",
+	"crop_yes" : "適用する",
+	"stage1" : "QRコードをスキャン",
+	"stage2" : "画像をお選びください"
 }
