@@ -248,5 +248,6 @@
 	"bg_size": "Bildejustering",
 	"delete_bg": "Fjern bakgrunn",
 	"stroke_width_tip": "Bred pennestrøk",
-	"opacity_tip": "Transparent"
+	"opacity_tip": "Transparent",
+	"next": "Neste"
 }
