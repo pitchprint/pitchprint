@@ -248,5 +248,6 @@
 	"bg_size": "Posicionamiento de fondo",
 	"delete_bg": "Eliminar Fondo",
 	"stroke_width_tip": "Anchura del trazo",
-	"opacity_tip": "Transparencia"
+	"opacity_tip": "Transparencia",
+	"next": "Siguiente"
 }
