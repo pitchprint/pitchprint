@@ -249,5 +249,6 @@
 	"bg_size": "背景の配置",
 	"delete_bg": "背景を削除",
 	"stroke_width_tip": "線の太さ",
-	"opacity_tip": "透明度"
+	"opacity_tip": "透明度",
+	"next": "進む"
 }
