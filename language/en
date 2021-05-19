@@ -250,8 +250,10 @@
 	"delete_bg": "Clear Background",
 	"stroke_width_tip": "Stroke Width",
 	"opacity_tip": "Transparency",
-	"stage1" : "Scan this QR code with your Phone",
-	"stage2" : "Great, now pick the photos you wish to upload from your Phone",
-	"stage3" : "Hang in there, we're uploading your photos",
-	"stage4" : "Almost done ;) we're just processing the Photos..."
+	"phone-upload": {
+		"stage1" : "Scan this QR code with your Phone",
+		"stage2" : "Great, now pick the photos you wish to upload from your Phone",
+		"stage3" : "Hang in there, we're uploading your photos",
+		"stage4" : "Almost done ;) we're just processing the Photos..."
+	}
 }
