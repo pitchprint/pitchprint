@@ -251,9 +251,10 @@
 	"stroke_width_tip": "Stroke Width",
 	"opacity_tip": "Transparency",
 	"phone-upload": {
-		"stage1" : "Scan this QR code with your Phone",
-		"stage2" : "Great, now pick the photos you wish to upload from your Phone",
-		"stage3" : "Hang in there, we're uploading your photos",
-		"stage4" : "Almost done ;) we're just processing the Photos..."
+		"title": "Upload Photos from your Phone",
+		"stage1": "Scan this QR code with your Phone",
+		"stage2": "Great, now pick the photos you wish to upload from your Phone",
+		"stage3": "Hang in there, we're uploading your photos",
+		"stage4": "Almost done ;) we're just processing the Photos..."
 	}
 }
