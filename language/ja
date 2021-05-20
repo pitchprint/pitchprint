@@ -249,5 +249,12 @@
 	"bg_size": "背景の配置",
 	"delete_bg": "背景を削除",
 	"stroke_width_tip": "線の太さ",
-	"opacity_tip": "透明度"
+	"opacity_tip": "透明度",
+	"phone-upload": {
+		"title": "携帯電話から画像をアップロード",
+		"stage1": "以下のQRコードをスキャンしてください。",
+		"stage2": "携帯電話から使用したい画像を選択してください。",
+		"stage3": "画像をアップロード中...",
+		"stage4": "画像の処理中..."
+	}
 }
