@@ -150,7 +150,7 @@
 			"add": "Lisää sivu",
 			"delete": "Poista sivu",
 			"swap": "Vaihda tätä sivua"
-		}
+		},
 		"data-form": {
 			"title": "Tiedot"
 		}		
