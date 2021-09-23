@@ -106,6 +106,11 @@
 	"uploaded_files": "Siirretyt tiedostot",
 	"pdf_download": "Lataa PDF",
 	"design_saved": "Mallisi on tallennettu!",
+	"pictures_title" : "Kuvakkeet",
+	"your_pictures_title" : "Omat kuvat",
+	"preview": "Esikatsele",
+	"submit": "Lähetä tilaus",
+	"preview_tip": "Esikatsele tuote",
 	"modules": {
 		"variable-data": {
 			"title": "Tee eri versioita",
@@ -145,7 +150,10 @@
 			"add": "Lisää sivu",
 			"delete": "Poista sivu",
 			"swap": "Vaihda tätä sivua"
-		}
+		},
+		"data-form": {
+			"title": "Tiedot"
+		}		
 	},
 	"page_delete_alert": "Tämä poistaa nykyisen mallisivun.<br/>Haluatko jatkaa?",
 	"gallery_search": "Etsi galleriaa kirjoittamalla..",
