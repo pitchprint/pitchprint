@@ -186,6 +186,7 @@
 			"help" : "Click here to adjust your canvas dimension"
 		},
 		"page-loader": {
+			"title": "Add Page",
 			"add": "Add this Page",
 			"delete": "Delete / re-Arrange Pages",
 			"swap": "Swap with this Page",
