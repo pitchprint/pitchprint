@@ -159,6 +159,7 @@
 			"help": "Clic aquí para ajustar el tamaño de tu lienzo"
 		},
 		"page-loader": {
+			"title": "Páginas",
 			"add": "Añadir Página",
 			"delete": "Borrar Página",
 			"sort": "Arrastre para reorganizar o eliminar páginas",
