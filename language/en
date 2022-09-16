@@ -5,6 +5,7 @@
 	"select_style" : "Select a Style",
 	"toggle_textbox": "Toggle TextBox mode",
 	"reload_tip" : "Reload Design",
+	"reload_design" : "Reload Design",
 	"bg_transparency_tip" : "Adjust background transparency",
 	"paste_tip" : "PASTE",
     "undo_tip" : "UNDO",
