@@ -147,6 +147,7 @@
 	"close_title": "Close Application ?",
 	"poor_browser": "We're sorry, your browser is outdated. Kindly try a different browser.",
 	"confirm_design": "Confirm your design",
+	"confirm": "Confirm",
 	"toggle_grid" : "Toggle Grid lines",
 	"modules" : {
 		"variable-data" : {
