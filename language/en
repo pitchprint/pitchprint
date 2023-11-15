@@ -201,7 +201,8 @@
 			"cancel": "Cancel",
 			"okay": "Ok",
 			"warning_title": "Change Design",
-			"warning": "You may loose any edits you have done. Do you wish to continue?"
+			"warning": "You may loose any edits you have done. Do you wish to continue?",
+			"design_search": "Search Designs"
 		},
 		"photo": {
 			"button_tip": "Photo Prints",
