@@ -276,5 +276,6 @@
 	"ai_cat_product": "Product",
 	"ai_generate": "Generate Image",
 	"remove_bg": "Remove Background",
-	"undo_remove_bg": "Undo Remove Background"
+	"undo_remove_bg": "Undo Remove Background",
+	"sFontsPlaceholder": "Type to search fonts..."
 }
