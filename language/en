@@ -288,7 +288,7 @@
 	"ai_s_tile_texture": "Tile Texture",
 	"ai_generate": "Generate Image",
 	"ai_generating": "Generating Image",
-	"ai_prompt_templates": "Prompt Templates"
+	"ai_prompt_templates": "Prompt Templates",
 	"remove_bg": "Remove Background",
 	"undo_remove_bg": "Undo Remove Background",
 	"s_fonts_placeholder": "Type to search fonts..."
